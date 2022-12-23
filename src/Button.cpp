@@ -93,5 +93,5 @@ uint32_t Button::DureeEtatEnCours()
 void Button::AfficherDebug()
 {
   if(actionne || relache)
-      Serial.printf("actionne %d, relache %d, dureeAction %d, act1SenCours %d, act5SenCours %d, relache1S %d, relache5S %d \n", actionne, relache, DureeEtatEnCours(), actionne1SenCours, actionne5SenCours, relache1S, relache5S);  
+      Serial.printf("%d actioné %d, relache %d, dureeAction %d, act1SenCours %d, act5SenCours %d, relache1S %d, relache5S %d \n",PIN, actionne, relache, DureeEtatEnCours(), actionne1SenCours, actionne5SenCours, relache1S, relache5S);  
 }
