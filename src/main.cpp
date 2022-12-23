@@ -4,6 +4,7 @@
 
 Button bouton1 = Button(12,false );
 Button bouton2 = Button(14,false );
+Button bouton3 = Button(13,false );
 void setup() {
   //Pour initialiser la liaison série :
   Serial.begin(115200);
@@ -26,4 +27,8 @@ void loop() {
 
   bouton2.MAJ();
   bouton2.AfficherDebug();
+
+  bouton3.MAJ();
+  bouton3.AfficherDebug();
+  
 }
