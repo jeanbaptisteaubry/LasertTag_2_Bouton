@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include "Button.h"
-
+#include "ButtonInterface.h"
 
 Button bouton1 = Button(12,false );
 Button bouton2 = Button(14,false );
