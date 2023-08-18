@@ -27,7 +27,7 @@ public:
   ButtonInterface(uint8_t _PIN); //Constructeur
   ButtonInterface(uint8_t _PIN, bool modePullUp); //Constructeur avec précision du mode de pullup du bouton. Les boutons sont normalement ouverts ou fermés, il faut donc préciser le mode de pullup
   virtual void MAJ() = 0; //Mise à jour de l'état du bouton, à faire chaque cycle de setup();
-  void AfficherDebug(); //Affiche les informations de debug du bouton
+  virtual void AfficherDebug(); //Affiche les informations de debug du bouton
   uint32_t DureeEtatEnCours(); //Retourne la durée en ms depuis le dernier changement d'état du bouton
 };
 
