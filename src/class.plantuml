@@ -1,0 +1,49 @@
+@startuml class
+ButtonInterface <|-- Button
+ButtonInterface <|-- ButtonDebug
+ButtonDebug ---> "0,* simulationTable" SimulationEntry
+class ButtonInterface{
+
+    ~uint32_t lastMillis;
+    ~uint32_t dureeAction;
+    ~void logicMaj(int etatBouton);
+    +uint8_t PIN;
+    +uint32_t numberKeyPresses;
+    +bool actionne;
+    +bool actionne1SenCours;
+    +bool actionne5SenCours;
+    +bool relache;
+    +bool relache1S;
+    +bool relache5S;
+    +int etatHaut ;
+    +ButtonInterface(uint8_t _PIN);
+    +ButtonInterface(uint8_t _PIN, bool modePullUp);
+    +virtual void MAJ() = 0;
+    +virtual void AfficherDebug();
+    +uint32_t DureeEtatEnCours();
+}
+
+class Button{
+
+    +Button(uint8_t _PIN);
+    +Button(uint8_t _PIN, bool modePullUp);
+    +void MAJ() override;
+
+}
+
+class ButtonDebug{
+
+    -size_t tableSize;
+    -int currentSimulationIndex ;
+    +ButtonDebug(uint8_t _PIN, const SimulationEntry *table, size_t size);
+    +ButtonDebug(uint8_t _PIN, bool modePullUp, const SimulationEntry *table, size_t size);
+    +void MAJ() override;
+    +void AfficherDebug() override;
+
+}
+class SimulationEntry{
+    -uint32_t time;
+    -int etatPin;
+}
+
+@enduml
