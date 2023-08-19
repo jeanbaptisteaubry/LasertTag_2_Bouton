@@ -6,3 +6,7 @@
 
 ## Exemple
 * dans le main !
+
+## Version
+1.0.1 : ajout de la consommation de l'appui sur un bouton
+1.0.0 : version initiale

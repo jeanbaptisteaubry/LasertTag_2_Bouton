@@ -41,7 +41,7 @@ void ButtonInterface::logicMaj(int etatBouton)
             relache5S = false;
 
             numberKeyPresses++;
-
+            appuiConsomme = false;
             lastMillis = millisAct;
         }
         else
@@ -93,4 +93,14 @@ void ButtonInterface::AfficherDebug()
 {
     if (actionne || relache)
         Serial.printf("%d actioné %d, relache %d, dureeAction %d, act1SenCours %d, act5SenCours %d, relache1S %d, relache5S %d \n", PIN, actionne, relache, DureeEtatEnCours(), actionne1SenCours, actionne5SenCours, relache1S, relache5S);
+}
+
+bool ButtonInterface::consommeAppui()
+{
+    if(appuiConsomme == false && actionne == true)
+    {
+        appuiConsomme = true;
+        return true;
+    }
+    return false;
 }

@@ -7,6 +7,7 @@
 class ButtonInterface
 {
 protected:
+  bool appuiConsomme = false;
   uint32_t lastMillis;
   uint32_t dureeAction;
   void logicMaj(int etatBouton);
@@ -29,6 +30,7 @@ public:
   virtual void MAJ() = 0; //Mise à jour de l'état du bouton, à faire chaque cycle de setup();
   virtual void AfficherDebug(); //Affiche les informations de debug du bouton
   uint32_t DureeEtatEnCours(); //Retourne la durée en ms depuis le dernier changement d'état du bouton
+  bool consommeAppui(); //Retourne true si un appui a été consommé depuis le dernier appel à cette fonction
 };
 
 
