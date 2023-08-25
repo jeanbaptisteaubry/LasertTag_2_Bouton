@@ -42,15 +42,21 @@ void ButtonInterface::logicMaj(int etatBouton)
 
             numberKeyPresses++;
             appuiConsomme = false;
+            appui1SConsomme = true;
+            appui5SConsomme = true;
             lastMillis = millisAct;
         }
         else
         {
             // L'action est en cours et l'on va détecter depuis combien de temps
-            if (millisAct - lastMillis > 1000)
+            if (millisAct - lastMillis > 1000 && actionne1SenCours == false)
+            {
                 actionne1SenCours = true;
-            if (millisAct - lastMillis > 5000)
+            }
+            if (millisAct - lastMillis > 5000 && actionne5SenCours == false)
+            {
                 actionne5SenCours = true;
+            }
         }
         // Serial.printf("etatBouton %d\n", etatBouton);
     }
@@ -68,9 +74,15 @@ void ButtonInterface::logicMaj(int etatBouton)
             {
                 relache = true;
                 if (dureeAction > 1000)
+                {
                     relache1S = true;
+                    appui1SConsomme = false;
+                }
                 if (dureeAction > 5000)
+                {
                     relache5S = true;
+                    appui5SConsomme = false;
+                }
             }
             else
                 numberKeyPresses--;
@@ -97,9 +109,29 @@ void ButtonInterface::AfficherDebug()
 
 bool ButtonInterface::consommeAppui()
 {
-    if(appuiConsomme == false && actionne == true)
+    if (appuiConsomme == false && actionne == true)
     {
         appuiConsomme = true;
+        return true;
+    }
+    return false;
+}
+
+bool ButtonInterface::consommeAppui1S()
+{
+    if (appui1SConsomme == false && relache1S == true)
+    {
+        appui1SConsomme = true;
+        return true;
+    }
+    return false;
+}
+
+bool ButtonInterface::consommeAppui5S()
+{
+    if (appui5SConsomme == false && relache5S == true)
+    {
+        appui5SConsomme = true;
         return true;
     }
     return false;

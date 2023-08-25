@@ -2,7 +2,7 @@
 ButtonInterface <|-- Button
 ButtonInterface <|-- ButtonDebug
 ButtonDebug ---> "0,* simulationTable" SimulationEntry
-class ButtonInterface{
+interface ButtonInterface{
     ~bool appuiConsomme
     ~uint32_t lastMillis
     ~uint32_t dureeAction
